@@ -29,7 +29,7 @@ To use Jev instead of scripted decisions, set `TYPESAFE_API_KEY` and add `--jev`
 ## Embed it
 
 ```sh
-npm install github:gbesse/worldkit#v0.1.0
+npm install github:gbesse/worldkit#v0.1.1
 ```
 
 ```js
@@ -61,6 +61,10 @@ Behavior packs include explicit `wait`, instructions and a priority list. The sc
 There is no dialogue generator, long-term NPC memory, Unity/Godot plugin, sandbox for arbitrary plugin code, multiplayer server or live performance benchmark. Rules and action kinds are deliberately finite; adding a new action requires extending the engine and its tests. History lives in memory and snapshots, without compaction.
 
 The potential advantage is reusable behavior packs, engine adapters and replay fixtures adopted across games. This alpha supplies the pack/runtime contract and a working game loop. It has not yet acquired an ecosystem or demonstrated player preference for Jev decisions.
+
+## Shareable demo report
+
+Run `npm run demo:report` to capture this repository’s bundled example as one JSON object with the project purpose, version and complete demo output. The command fails if the demo fails, so the report is useful when sharing a reproducible first look or reporting unexpected behavior. The bundled demo’s data and safety boundaries still apply.
 
 ## Validation and Jev integration
 
