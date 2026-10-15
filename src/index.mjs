@@ -77,3 +77,21 @@ export function replay(initial, history) {
   }
   return world;
 }
+
+
+export function replayAudit(initial, history, {maxSteps=10000,lang='en'}={}) {
+ const messages={en:'Replay diverged or its plan is invalid.',fr:'La répétition diverge ou son plan est invalide.',es:'La repetición diverge o su plan no es válido.'};
+ if(!Object.hasOwn(messages,lang)||!Number.isSafeInteger(maxSteps)||maxSteps<1||maxSteps>100000||!Array.isArray(history)||history.length>maxSteps)
+  throw new TypeError('Limites de répétition invalides / Invalid replay bounds / Límites de repetición no válidos');
+ validateWorld(initial);let world=structuredClone(initial);const entries=structuredClone(history),initialFingerprint=worldFingerprint(world);
+ for(let index=0;index<entries.length;index++){
+  try{
+   const result=commitTurn(world,entries[index].plan);
+   if(fingerprint(result.event)!==fingerprint(entries[index].event))throw new Error('event_mismatch');
+   world=result.world;
+  }catch{
+   return {valid:false,indexBase:0,failedAt:index,verifiedTurns:index,totalTurns:entries.length,initialFingerprint,finalFingerprint:worldFingerprint(world),reason:messages[lang],world};
+  }
+ }
+ return {valid:true,indexBase:0,failedAt:null,verifiedTurns:entries.length,totalTurns:entries.length,initialFingerprint,finalFingerprint:worldFingerprint(world),reason:null,world};
+}

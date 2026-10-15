@@ -16,3 +16,5 @@ export function availableActions(world: World, actorId: string, behavior?: Behav
 export function planScripted(world: World, actorId: string, behavior: Behavior): Plan;
 export function commitTurn(world: World, plan: Plan): { world: World; event: Event };
 export function replay(initial: World, history: HistoryEntry[]): World;
+
+export function replayAudit(initial:World,history:HistoryEntry[],options?:{maxSteps?:number;lang?:'fr'|'en'|'es'}):{valid:boolean;indexBase:0;failedAt:number|null;verifiedTurns:number;totalTurns:number;initialFingerprint:string;finalFingerprint:string;reason:string|null;world:World};
