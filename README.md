@@ -84,3 +84,11 @@ Library errors propagate; CLI failures print to stderr and exit nonzero. Embeddi
 [DecisionPacks](https://github.com/gbesse/decisionpacks) · [Autonomy Meter](https://github.com/gbesse/autonomy-meter) · [IntentBus](https://github.com/gbesse/intentbus) · [ExceptionOS](https://github.com/gbesse/exceptionos) · [Agent Mandates](https://github.com/gbesse/agent-mandates) · [MatchGraph](https://github.com/gbesse/matchgraph) · [WorldKit](https://github.com/gbesse/worldkit)
 
 Independent projects; no affiliation with TypeSafe. MIT licensed.
+
+## Bounded replay audit / Audit de répétition borné / Auditoría limitada
+
+EN: `replayAudit(initial, history, {maxSteps, lang})` returns verified turn counts, the first failing zero-based step, state fingerprints and a detached verified-prefix world. A malformed plan or changed event stops the audit without claiming later turns passed. Oversized histories are refused before processing. Run `node examples/replay-audit.mjs` for FR/EN/ES tampering cases. This checks supplied local game transcripts, not authenticated agents, hidden game-engine state or production behavior. Hashes and records are unsigned.
+
+FR : `replayAudit(initial, history, {maxSteps, lang})` retourne tours vérifiés, première étape fautive indexée depuis zéro, empreintes et copie du monde du préfixe vérifié. Un plan invalide ou événement modifié arrête l’audit sans valider les tours suivants. Les historiques trop longs sont refusés avant traitement. `node examples/replay-audit.mjs` montre les cas FR/EN/ES. Cela vérifie un transcript local fourni, pas des agents authentifiés, un état caché de moteur ni la production. Hashes et enregistrements non signés.
+
+ES: `replayAudit(initial, history, {maxSteps, lang})` devuelve turnos verificados, primer paso fallido desde cero, huellas y copia del mundo del prefijo verificado. Plan incorrecto o evento cambiado detiene auditoría sin validar turnos posteriores. Rechaza historiales excesivos antes de procesar. `node examples/replay-audit.mjs` muestra casos FR/EN/ES. Comprueba transcripciones locales, no agentes autenticados, estado oculto del motor ni producción. Hashes/registros sin firma.
