@@ -2,6 +2,7 @@
 import { evaluate, createJevProvider } from '@gbesse/decisionpacks';
 import { availableActions, worldFingerprint, validateBehavior } from './index.mjs';
 export async function planWithJev(world, actorId, behavior, { provider, signal, minProbability = 0.8 } = {}) {
+  signal?.throwIfAborted();
   validateBehavior(behavior);
   if (!Number.isFinite(minProbability) || minProbability < 0 || minProbability > 1) throw new Error('Invalid minProbability');
   world = structuredClone(world); behavior = structuredClone(behavior);
