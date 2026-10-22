@@ -92,3 +92,11 @@ EN: `replayAudit(initial, history, {maxSteps, lang})` returns verified turn coun
 FR : `replayAudit(initial, history, {maxSteps, lang})` retourne tours vérifiés, première étape fautive indexée depuis zéro, empreintes et copie du monde du préfixe vérifié. Un plan invalide ou événement modifié arrête l’audit sans valider les tours suivants. Les historiques trop longs sont refusés avant traitement. `node examples/replay-audit.mjs` montre les cas FR/EN/ES. Cela vérifie un transcript local fourni, pas des agents authentifiés, un état caché de moteur ni la production. Hashes et enregistrements non signés.
 
 ES: `replayAudit(initial, history, {maxSteps, lang})` devuelve turnos verificados, primer paso fallido desde cero, huellas y copia del mundo del prefijo verificado. Plan incorrecto o evento cambiado detiene auditoría sin validar turnos posteriores. Rechaza historiales excesivos antes de procesar. `node examples/replay-audit.mjs` muestra casos FR/EN/ES. Comprueba transcripciones locales, no agentes autenticados, estado oculto del motor ni producción. Hashes/registros sin firma.
+
+## Annulation / Cancellation / Cancelación
+
+FR — Une planification déjà annulée ne retourne plus de plan, même lorsque seule l’action attendre est possible ; aucun fournisseur n’est appelé.
+
+EN — Already-cancelled planning cannot return a plan, even when wait is the only valid action; no provider is called.
+
+ES — Una planificación ya cancelada no devuelve plan, incluso cuando esperar es la única acción válida; no llama al proveedor.
