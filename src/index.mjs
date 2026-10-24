@@ -63,8 +63,8 @@ export function commitTurn(world, plan) {
     default: throw new Error('Unsupported action');
   }
   next.tick++;
-  const event = { tick: next.tick, actorId: a.id, actionId: selected.id, source: plan.source, before: plan.expectedFingerprint, after: worldFingerprint(next), description: `${a.name}: ${selected.description}` };
-  next.history.push({ plan: structuredClone(plan), event });
+  const event = structuredClone({ tick: next.tick, actorId: a.id, actionId: selected.id, source: plan.source, before: plan.expectedFingerprint, after: worldFingerprint(next), description: `${a.name}: ${selected.description}` });
+  next.history.push({ plan: structuredClone(plan), event: structuredClone(event) });
   validateWorld(next);
   return { world: next, event };
 }
