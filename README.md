@@ -100,3 +100,11 @@ FR — Une planification déjà annulée ne retourne plus de plan, même lorsque
 EN — Already-cancelled planning cannot return a plan, even when wait is the only valid action; no provider is called.
 
 ES — Una planificación ya cancelada no devuelve plan, incluso cuando esperar es la única acción válida; no llama al proveedor.
+
+## Event ownership / Propriété du reçu / Propiedad del recibo
+
+FR — Le reçu renvoyé, la source du plan et le journal possèdent des copies indépendantes. Annoter le reçu ne corrompt plus la répétition enregistrée.
+
+EN — The returned receipt, plan source and history own independent copies. Annotating a receipt no longer corrupts the recorded replay.
+
+ES — El recibo devuelto, la fuente del plan y el historial poseen copias independientes. Anotar el recibo ya no corrompe la repetición registrada.
